@@ -1,0 +1,62 @@
+.socialLinks {
+  list-style: none;
+  display: flex;
+}
+
+.footerBottom .socialLinks li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 25px;
+}
+
+.footerBottom .socialLinks li a {
+  color: #00ff00;
+  font-size: 30px;
+}
+
+.footerBottom .socialLinks li a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+ul {
+  padding-left: 0px !important;
+}
+
+.info i {
+  font-size: 30px;
+  color: #00ff00;
+  float: left;
+}
+
+.info p {
+  padding: 0 0 10px 40px;
+  margin-bottom: 20px;
+  line-height: 22px;
+}
+
+.mar-left-50 {
+  margin-left: 30px;;
+}
+
+.btn-message {
+  color: #fff;
+  border-color: #00ff00;
+}
+
+.btn-message:hover {
+  background-color: #00ff00;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0 !important;
+}
+
+.error-align {
+  text-align: right;
+  color: #dc3545;
+}
+
+button:focus {
+  box-shadow: none;
+}

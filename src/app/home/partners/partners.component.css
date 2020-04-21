@@ -1,0 +1,25 @@
+.slider__container {
+	width:80%;
+	position:relative;
+}
+.slick-list {
+	perspective:1px;
+}
+.slick-track {
+	will-change:transform,transition;
+}
+.slider__items {
+	display:flex;
+}
+.slider-prev {
+  position:absolute;
+  z-index:1;
+  top:50%;
+  left:10px;
+}
+.slider-next {
+  position:absolute;
+  z-index:1;
+  top:50%;
+  right:10px;
+}

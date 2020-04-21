@@ -1,0 +1,124 @@
+<section class="pdd-top-70 pdd-bottom-70">
+  <h3 class="section-title text-center">NEWS ABOUT OUR PRODUCT</h3>
+  <div class="container-fluid mar-top-50">
+    <div id="carousel-example" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner row w-100 mx-auto" role="listbox">
+          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+            <div class="article">
+              <a href="">
+                <div class="article-thumb">
+                  <img class="img-fluid"  src="../../assets/images/paul.jpg">
+                </div>
+                <div class="article-content pdd-top-20 pdd-left-15">
+                  <span class="article-date">Wed. Feb 26 2020</span>
+                  <h5 class="article-heading">This is some dummy text about the news</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="article">
+              <a href="">
+                <div class="article-thumb">
+                  <img class="img-fluid"  src="../../assets/images/paul.jpg">
+                </div>
+                <div class="article-content pdd-top-20 pdd-left-15">
+                  <span class="article-date">Wed. Feb 26 2020</span>
+                  <h5 class="article-heading">This is some dummy text about the news</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="article">
+              <a href="">
+                <div class="article-thumb">
+                  <img class="img-fluid"  src="../../assets/images/paul.jpg">
+                </div>
+                <div class="article-content pdd-top-20 pdd-left-15">
+                  <span class="article-date">Wed. Feb 26 2020</span>
+                  <h5 class="article-heading">This is some dummy text about the news</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="article">
+              <a href="">
+                <div class="article-thumb">
+                  <img class="img-fluid"  src="../../assets/images/paul.jpg">
+                </div>
+                <div class="article-content pdd-top-20 pdd-left-15">
+                  <span class="article-date">Wed. Feb 26 2020</span>
+                  <h5 class="article-heading">This is some dummy text about the news</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="article">
+              <a href="">
+                <div class="article-thumb">
+                  <img class="img-fluid"  src="../../assets/images/paul.jpg">
+                </div>
+                <div class="article-content pdd-top-20 pdd-left-15">
+                  <span class="article-date">Wed. Feb 26 2020</span>
+                  <h5 class="article-heading">This is some dummy text about the news</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="article">
+              <a href="">
+                <div class="article-thumb">
+                  <img class="img-fluid"  src="../../assets/images/paul.jpg">
+                </div>
+                <div class="article-content pdd-top-20 pdd-left-15">
+                  <span class="article-date">Wed. Feb 26 2020</span>
+                  <h5 class="article-heading">This is some dummy text about the news</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+      </div>
+      <a class="carousel-control carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+  </div>
+  </div>
+</section>
+
+<script>
+  /*
+    Carousel
+*/
+$('#carousel-example').on('slide.bs.carousel', function (e) {
+    /*
+        CC 2.0 License Iatek LLC 2018 - Attribution required
+    */
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 5;
+    var totalItems = $('.carousel-item').length;
+
+    if (idx >= totalItems-(itemsPerSlide-1)) {
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i=0; i<it; i++) {
+            // append slides to end
+            if (e.direction=="left") {
+                $('.carousel-item').eq(i).appendTo('.carousel-inner');
+            }
+            else {
+                $('.carousel-item').eq(0).appendTo('.carousel-inner');
+            }
+        }
+    }
+});
+
+</script>

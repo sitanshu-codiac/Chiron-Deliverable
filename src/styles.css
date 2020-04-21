@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+
+@media only screen and (max-width: 600px) {
+  .carousel-item {
+    height: 100% !important;
+  }
+}
+
+html, body{
+	height: 100%;
+	width: 100%;
+}
+
+.pdd-top-15{
+	padding-top: 15px;
+}
+.pdd-left-15{
+  padding-left: 15px;
+}
+
+.pdd-left-20{
+	padding-left: 20px;
+}
+.pdd-right-20{
+	padding-right: 20px;
+}
+.pdd-top-20{
+	padding-top: 20px;
+}
+.pdd-bottom-20{
+	padding-bottom: 20px;
+}
+
+.pdd-right-30{
+	padding-right: 30px;
+}
+.pdd-top-30{
+	padding-top: 30px;
+}
+.pdd-bottom-30{
+	padding-bottom: 30px;
+}
+.pdd-left-30{
+	padding-left: 30px;
+}
+
+.pdd-right-40{
+	padding-right: 40px;
+}
+.pdd-left-40{
+	padding-left: 40px;
+}
+.pdd-bottom-40{
+	padding-bottom: 40px;
+}
+.pdd-top-40{
+  padding-top: 40px;
+}
+
+.pdd-right-50{
+	padding-right: 50px;
+}
+.pdd-left-50{
+	padding-left: 50px;
+}
+.pdd-bottom-50{
+	padding-bottom: 50px;
+}
+.pdd-top-50{
+  padding-top: 50px;
+}
+
+.pdd-top-70{
+  padding-top: 70px;
+}
+.pdd-bottom-70{
+  padding-bottom: 70px;
+}
+
+.mar-top-50{
+  margin-top: 50px;
+}
+
+.background-black {
+  background-color: #232323;
+}
+
+.background-grey {
+  background-color: #f7f7f7;
+}
+
+.font-color-white {
+  color: #ffffff;
+}
+
+.form-control, .btn {
+  border-radius: 0 !important;
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

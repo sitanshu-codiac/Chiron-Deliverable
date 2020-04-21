@@ -1,0 +1,62 @@
+<section class="font-color-white">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="loginModalCenterTitle">Login to your <strong>account</strong></h3>
+      </div>
+
+      <div class="modal-body pdd-top-30">
+        <form (submit)="onLogin(loginForm)" #loginForm="ngForm" novalidate>
+          <div class="form-group">
+            <i class="fa fa-envelope" style="padding-top:12px;"></i>
+            <input
+              type="email"
+              placeholder="Enter an email address*"
+              class="form-control"
+              id="loginInputEmail"
+              aria-describedby="emailHelp"
+              name="email"
+              ngModel
+              #emailInput="ngModel"
+              required
+              email
+              [ngClass]="{'is-invalid': loginForm.submitted && emailInput.invalid}">
+          <div *ngIf="loginForm.submitted && emailInput.invalid" class="invalid-feedback">
+            <p *ngIf="emailInput.errors.required">Email is required</p>
+            <p *ngIf="emailInput.errors.email">Please enter a correct email</p>
+          </div>
+          </div>
+          <div class="form-group pdd-top-20">
+            <i class="fa fa-key" style="padding-top: 12px;"></i>
+            <input
+              type="password"
+              placeholder="Enter a password*"
+              class="form-control"
+              id="loginInputPassword"
+              name="password"
+              ngModel
+              #passwordInput="ngModel"
+              required
+              minlength="6"
+              [ngClass]="{'is-invalid': loginForm.submitted && passwordInput.invalid}">
+            <div *ngIf="loginForm.submitted && passwordInput.invalid" class="invalid-feedback">
+              <p *ngIf="passwordInput.errors.required">Password is required</p>
+              <p *ngIf="passwordInput.errors.minlength">Password must be at least 6 characters</p>
+            </div>
+          </div>
+          <div class="form-group form-check pdd-top20" style="margin-bottom: 30px;">
+            <input type="checkbox" class="form-check-input" id="loginCheck">
+            <label class="form-check-label" for="loginCheck">Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
+
+          <a href="#"><p class="text-center pdd-top-15">Forgot Password?</p></a>
+          <div class="dropdown-divider"></div>
+          <p class="text-center" style="margin-top: 20px;">Don't have an account?
+            <a routerLink="/signup">Sign up</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+<div class="wrapper d-flex">
+  <div class="sideMenu bg-mattBlackLight">
+    <div class="sidebar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link px-2">
+            <span class="text">7</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2">
+            <img class="img-fluid" src="../../assets/images/paul.jpg">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2">
+            <div class="player">Paul Charton</div>
+            <div class="player">64 Kg</div>
+            <div class="player">1m58</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content">
+    <main *ngIf="records.length >= 1 && !isFetching">
+      <div class="container-fluid">
+        <div class="dropdown-divider"></div>
+        <div class="row pdd-top-20">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <google-chart id="chart" #chart
+                [type]="type"
+                [data]="data"
+                [columnNames]="columnNames"
+                [dynamicResize]="true"
+                [title]="title"
+                [options]="option1">
+              </google-chart>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <google-chart id="chart" #chart
+              [type]="typeOfChart"
+              [data]="dataOfChart"
+              [columnNames]="columnNames"
+              [dynamicResize]="true"
+              [title]="titleChart"
+              [options]="option2">
+            </google-chart>
+          </div>
+        </div>
+
+        <div class="row pdd-top-20">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <google-chart id="chart" #chart
+                [type]="type3"
+                [data]="data3"
+                [columnNames]="columnNames"
+                [dynamicResize]="true"
+                [options]="option3">
+              </google-chart>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <google-chart id="chart" #chart
+              [type]="typeOfChart"
+              [data]="dataOfChart"
+              [columnNames]="columnNames"
+              [dynamicResize]="true"
+              [title]="titleChart">
+            </google-chart>
+          </div>
+        </div>
+
+
+      </div>
+    </main>
+  </div>
+
+</div>

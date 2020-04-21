@@ -1,0 +1,39 @@
+h3 {
+  font-size: 32px;
+  color: #111;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.member h4 {
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 18px;
+}
+
+.member span {
+  font-style: italic;
+  font-size: 13px;
+  display: block;
+}
+
+.pic {
+  margin-bottom: 5px;
+}
+
+.social {
+  margin-top: 15px;
+}
+
+.social a {
+  color: #b3b3b3;
+}
+
+.social a:hover {
+  color: #00ff00;
+}
+
+.member .social i {
+  font-size: 18px;
+  margin: 0 3px;
+}

@@ -1,0 +1,10 @@
+<div *ngIf="records.length >= 1 && !isFetching">
+  <google-chart #chart
+  [type]="type"
+  [data]="data"
+  [columnNames]="columnNames"
+  [width]="width"
+  [height]="height">
+</google-chart>
+</div>
+

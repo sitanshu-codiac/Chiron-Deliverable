@@ -1,0 +1,39 @@
+/******* Navbar styles *******/
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+
+.navbar{
+	padding: .8rem;
+}
+
+.nav-link, .navbar-brand{
+	color: #ffffff !important;
+}
+.navbar-expand-md .navbar-nav .nav-link{
+	padding-left:1.5rem;
+	padding-right:1.5rem;
+}
+
+.navbar-nav a:hover{
+  color: #00ff00 !important;
+  border-color: #ffffff !important;
+}
+
+.navbar-nav .active{
+	color: #00ff00  !important;
+}
+
+.navbar-toggler{
+	background-color: #ffffff;
+}
+
+.bg-gradient{
+	background-image: linear-gradient(to bottom, #000 , #0000)
+}
+
+
+
+/******* Navbar styles ends *******/
