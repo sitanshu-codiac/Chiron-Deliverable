@@ -35,10 +35,11 @@ export class GetChartService {
                   const amp = phase.amplitude * 100;
                   const sym = phase.symmetry * 10;
                   const ph = weight / (phase.time / 1000);
+                  const ph1 = phase.time / 1000;
                   amplitudeArray.push([i , amp]);
                   symmetryArray.push([i , sym]);
                   explosiviteArray.push([i, ph]);
-                  phaseArray.push(ph);
+                  phaseArray.push(ph1);
                   i += 1;
                 } else {
                   const ph = phase.time / 1000;

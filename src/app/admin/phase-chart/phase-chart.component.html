@@ -1,1 +1,11 @@
-<p>phase-chart works!</p>
+<div class="phase-chart" *ngIf="records.length >= 1 && !isFetching">
+  <google-chart id="chart" #chart
+    [type]="type"
+    [data]="data"
+    [columnNames]="columnNames"
+    [dynamicResize]="true"
+    [options]="options"
+  >
+  </google-chart>
+</div>
+

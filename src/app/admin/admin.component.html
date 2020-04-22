@@ -1,4 +1,4 @@
-<div class="container-fluid wrapper">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-2 sidebar">
       <ul class="sidebar-account">
@@ -18,51 +18,20 @@
     <!-----------  END OF SIDEBAR  ---------------->
     <div *ngIf="records.length >= 1 && !isFetching" class="col-md-10">
       <div class="dropdown-divider"></div>
-      <div class="row pdd-top-20">
+      <div class="row pdd-top-50">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <google-chart id="chart" #chart
-              [type]="type"
-              [data]="data"
-              [columnNames]="columnNames"
-              [dynamicResize]="true"
-              [title]="title"
-              [options]="option1">
-            </google-chart>
-            <div class="overlay">
-              <div>Avg: {{avg}}</div>
-            </div>
+          <app-amplitude-chart></app-amplitude-chart>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <google-chart id="chart" #chart
-            [type]="typeOfChart"
-            [data]="dataOfChart"
-            [columnNames]="columnNames"
-            [dynamicResize]="true"
-            [title]="titleChart"
-            [options]="option2">
-          </google-chart>
+          <app-explosivite-chart></app-explosivite-chart>
         </div>
       </div>
-
-      <div class="row pdd-top-20">
+      <div class="row pdd-top-50">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <google-chart id="chart" #chart
-            [type]="type3"
-            [data]="data3"
-            [columnNames]="columnNames"
-            [dynamicResize]="true"
-            [options]="option3">
-          </google-chart>
+          <app-phase-chart></app-phase-chart>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <google-chart id="chart" #chart
-            [type]="typeOfChart"
-            [data]="data4"
-            [title]="ExplosiviteTitle"
-            [columnNames]="columnNames"
-            [dynamicResize]="true"
-            [options]="option2">
-          </google-chart>
+          <app-asymetrie-chart></app-asymetrie-chart>
         </div>
       </div>
     </div>

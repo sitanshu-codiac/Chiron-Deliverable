@@ -1,19 +1,14 @@
-<p *ngIf="!isFetching && records.length < 1" style="color: white">...Loading</p>
-<div *ngIf="records.length >= 1 && !isFetching">
-  <google-chart #chart
+<div class="amplitude-chart" *ngIf="records.length >= 1 && !isFetching">
+  <google-chart id="chart" #chart
     [type]="type"
     [data]="data"
     [columnNames]="columnNames"
-    [width]="width"
-    [height]="height">
+    [dynamicResize]="true"
+    [options]="options"
+  >
   </google-chart>
-
-  <google-chart #chart
-  [type]="typeOfChart"
-  [data]="dataOfChart"
-  [columnNames]="columnNames"
-  [width]="width"
-  [height]="height">
-  </google-chart>
+  <div class="overlay">
+    <div>Avg: {{avg}}</div>
+  </div>
 </div>
 

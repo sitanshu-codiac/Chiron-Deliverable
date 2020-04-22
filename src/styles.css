@@ -97,7 +97,18 @@ html, body{
   border-radius: 0 !important;
 }
 
+#chart {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.overlay {
+  position: absolute;
+  top: 0;   /* chartArea top  */
+  left: 70%; /* chartArea left */
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: 'Lato';
+}
