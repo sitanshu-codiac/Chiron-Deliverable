@@ -22,7 +22,6 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "@swimlane/ngx-charts": "^14.0.0",
     "angular-google-charts": "^0.1.6",
     "bcrypt": "^3.0.8",
     "express": "^4.17.1",

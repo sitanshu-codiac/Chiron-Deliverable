@@ -3,7 +3,7 @@ const Records = require('../model/records');
 const router = express.Router();
 
 router.get("", (req, res, next) => {
-  Records.find({ _id: '5d95ecf870c70c1e5a164615' })
+  Records.find({ _id: '5d9e1dbe6c3dc9435415a162' })
     .then(fetchedRecords => {
       if(fetchedRecords) {
         console.log(fetchedRecords);

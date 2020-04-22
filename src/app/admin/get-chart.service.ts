@@ -20,21 +20,24 @@ export class GetChartService {
         console.log(responseData);
         const amplitudeArray = [];
         const symmetryArray = [];
+        const explosiviteArray = [];
         const someArray = [];
         const dataTransformArray = [];
         for (const key of responseData) {
           var i = 1;
           var j = 1;
           for (const serie of key.series) {
+            const weight = serie.weight;
             for ( const rep of serie.repetitions) {
               const phaseArray = [j];
               for (const phase of rep.phases) {
                 if ( phase.amplitude !== 0) {
                   const amp = phase.amplitude * 100;
                   const sym = phase.symmetry * 10;
-                  const ph = phase.time / 1000;
+                  const ph = weight / (phase.time / 1000);
                   amplitudeArray.push([i , amp]);
                   symmetryArray.push([i , sym]);
+                  explosiviteArray.push([i, ph]);
                   phaseArray.push(ph);
                   i += 1;
                 } else {
@@ -50,7 +53,8 @@ export class GetChartService {
         dataTransformArray.push(
           { amplitudeChart: amplitudeArray,
             symmetryChart: symmetryArray,
-            phaseChart: someArray
+            phaseChart: someArray,
+            explosiviteChart: explosiviteArray
           });
         return dataTransformArray;
       }))

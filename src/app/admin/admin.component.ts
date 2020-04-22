@@ -121,8 +121,11 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   titleChart = 'ASYMMETRY';
   typeOfChart = 'LineChart';
+  ExplosiviteTitle = 'EXPLOSIVITE';
   dataOfChart;
   data3;
+  data4;
+  avg;
 
   constructor(private chartService: GetChartService) { }
 
@@ -138,7 +141,14 @@ export class AdminComponent implements OnInit, OnDestroy {
             this.data = key.amplitudeChart;
             this.dataOfChart = key.symmetryChart;
             this.data3 = key.phaseChart;
+            this.data4 = key.explosiviteChart;
           }
+          let sum = 0;
+          for (const key of this.data) {
+            sum += key[1];
+          }
+          let av = sum / this.data.length;
+          this.avg = av.toPrecision(4);
           return responseData;
         })
       )
