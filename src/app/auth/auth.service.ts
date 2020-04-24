@@ -25,22 +25,29 @@ export class AuthService {
   }
 
   createUser(enteredEmail: string, enteredPassword: string) {
-    const authData: AuthData = { email: enteredEmail, password: enteredPassword };
-    this.http.post('http://localhost:3000/api/user/signup', authData)
+    // const authData: AuthData = { email: enteredEmail, password: enteredPassword };
+    this.http.post('http://localhost:3000/api/user/signup', {
+      enteredEmail,
+      enteredPassword
+    })
       .subscribe(response => {
         console.log(response);
       });
   }
 
   login(enteredEmail: string, enteredPassword: string) {
-    const authData: AuthData = { email: enteredEmail, password: enteredPassword };
-    this.http.post<{userName: string, token: string}>('http://localhost:3000/api/user/login', authData)
+    // const authData: AuthData = { email: enteredEmail, password: enteredPassword };
+    this.http.post<{userName: string, token: string, userWeight: number}>('http://localhost:3000/api/user/login', {
+      enteredEmail,
+      enteredPassword
+    })
       .subscribe(response => {
+        console.log(response);
         const token = response.token;
         this.token = token;
         this.isAuthenticated = true;
         this.authStatusListener.next(true);
-        this.router.navigate(['/admin']);
+        // this.router.navigate(['/admin']);
       });
   }
 

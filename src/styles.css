@@ -11,6 +11,10 @@ html, body{
 	width: 100%;
 }
 
+.pdd-top-10{
+	padding-top: 10px;
+}
+
 .pdd-top-15{
 	padding-top: 15px;
 }
@@ -107,7 +111,7 @@ html, body{
   position: absolute;
   top: 0;   /* chartArea top  */
   left: 70%; /* chartArea left */
-  color: #ffffff;
+  color: #fff;
   font-size: 25px;
   font-weight: 600;
   font-family: 'Lato';

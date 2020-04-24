@@ -30,6 +30,7 @@ import { AmplitudeChartComponent } from './admin/amplitude-chart/amplitude-chart
 import { ExplosiviteChartComponent } from './admin/explosivite-chart/explosivite-chart.component';
 import { PhaseChartComponent } from './admin/phase-chart/phase-chart.component';
 import { AsymetrieChartComponent } from './admin/asymetrie-chart/asymetrie-chart.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AsymetrieChartComponent } from './admin/asymetrie-chart/asymetrie-chart
     AmplitudeChartComponent,
     ExplosiviteChartComponent,
     PhaseChartComponent,
-    AsymetrieChartComponent
+    AsymetrieChartComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

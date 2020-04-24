@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 
 export class LoginComponent implements OnInit {
   isLoading = false;
+  error: string = null;
   constructor(public authService: AuthService) { }
 
   ngOnInit() { }
@@ -18,7 +19,9 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     this.authService.login(form.value.email, form.value.password);
     form.resetForm();
   }
+
 }

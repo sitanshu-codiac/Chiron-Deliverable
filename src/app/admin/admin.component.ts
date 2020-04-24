@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GetChartService } from './get-chart.service';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ChartData } from './chart-data.model';
 
 @Component({

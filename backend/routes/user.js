@@ -36,7 +36,8 @@ router.post("/login", (req, res, next) => {
       });
     }
     userFetched = user;
-    return bcrypt.compare(req.body.password, user.password);
+    return req.body.password === user.password;
+    //return bcrypt.compare(req.body.password, user.password);
   })
   .then(result => {
     console.log("in result");
@@ -52,7 +53,8 @@ router.post("/login", (req, res, next) => {
     );
     res.status(200).json({
       token: token,
-      userName: "Chiron"
+      userName: userFetched.first_name + userFetched.last_name,
+      userWeight: userFetched.weight
     });
   })
   .catch(err => {

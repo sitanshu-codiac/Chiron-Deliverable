@@ -19,6 +19,9 @@ export class PhaseChartComponent implements OnInit, OnDestroy {
   columnNames = ['Axis', 'PHASE CONCENTRIQUE', 'PHASE ISOMETRIQUE', 'PHASE EXCENTRIQUE'];
   data;
   avg;
+  options1 = {
+    isStacked: true
+  }
   options = {
     chartArea: {
       left: '10%',
@@ -33,10 +36,11 @@ export class PhaseChartComponent implements OnInit, OnDestroy {
         fontSize: 16,
         bold: 'true'
       },
-      alignment: 'center'
+      alignment: 'center',
+      maxLines: 3
     },
     isStacked: true,
-    colors: ['red', 'white', '#00ff00'],
+    colors: ['#f23c50', '#ffffff', '#2ace9a'],
     titleTextStyle: {
       color: 'fff',
       fontSize: 16

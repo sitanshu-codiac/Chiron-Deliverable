@@ -18,8 +18,7 @@ export class AsymetrieChartComponent implements OnInit, OnDestroy {
   type = 'LineChart';
   title = 'ASYMETRIE GLOBALE';
   columnNames = ['Axis', 'ASYMETRIE'];
-  data;
-  avg;
+  data; avg; maxValue; minValue;
   options = {
     chartArea: {
       left: '10%',
@@ -27,6 +26,7 @@ export class AsymetrieChartComponent implements OnInit, OnDestroy {
       width: '80%',
       height: '80%'
     },
+    colors: ['#32b0f3'],
     legend: {
       position: 'top',
       textStyle: {
@@ -74,9 +74,13 @@ export class AsymetrieChartComponent implements OnInit, OnDestroy {
             this.data = key.symmetryChart;
           }
           let sum = 0;
+          const valueArray = [];
           for (const key of this.data) {
             sum += key[1];
+            valueArray.push(key[1]);
           }
+          this.maxValue = Math.max(...valueArray).toPrecision(2);
+          this.minValue = Math.min(...valueArray).toPrecision(2);
           const average = sum / this.data.length;
           this.avg = average.toPrecision(4);
           return responseData;

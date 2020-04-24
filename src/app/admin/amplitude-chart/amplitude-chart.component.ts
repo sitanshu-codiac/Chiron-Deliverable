@@ -18,8 +18,12 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
   type = 'ColumnChart';
   title = 'AMPLITUDE';
   columnNames = ['Axis', 'AMPLITUDE'];
-  data;
-  avg;
+  data; avg; maxValue; minValue;
+
+  overlay = [];
+  autoSaveInterval;
+  counter = 0;
+
   options = {
     chartArea: {
       left: '10%',
@@ -36,7 +40,7 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
       },
       alignment: 'center'
     },
-    colors: ['#00ff00'],
+    colors: ['#2ace9a'],
     titleTextStyle: {
       color: 'fff',
       fontSize: 16
@@ -74,9 +78,13 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
             this.data = key.amplitudeChart;
           }
           let sum = 0;
+          const valueArray = [];
           for (const key of this.data) {
             sum += key[1];
+            valueArray.push(key[1]);
           }
+          this.maxValue = Math.max(...valueArray);
+          this.minValue = Math.min(...valueArray);
           const average = sum / this.data.length;
           this.avg = average.toPrecision(4);
           return responseData;
@@ -86,6 +94,18 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
         this.records = records;
         this.isFetching = false;
     });
+    setInterval(() => this.change(), 3000 );
+  }
+
+  change() {
+    this.overlay.push('Avg: ' + this.avg);
+    this.overlay.push(`Max: ${this.maxValue}`);
+    this.autoSaveInterval = this.overlay[this.counter];
+    this.counter++;
+    if (this.counter >= this.overlay.length) {
+      this.counter = 0;
+      // clearInterval(inst); // uncomment this if you want to stop refreshing after one cycle
+    }
   }
 
   ngOnDestroy() {

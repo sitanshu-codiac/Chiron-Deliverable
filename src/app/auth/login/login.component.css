@@ -57,3 +57,7 @@ a {
 .is-invalid {
   border-bottom: 1px solid #dc3545 !important;
 }
+
+.alert {
+  border-radius: 0 !important;
+}

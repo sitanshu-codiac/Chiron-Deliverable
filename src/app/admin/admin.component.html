@@ -5,7 +5,7 @@
         <li class="pdd-top-20">
           <span class="text">7</span>
         </li>
-        <li class="pdd-top-10">
+        <li class="pdd-top-10 text-center">
           <img class="img-fluid" src="../../assets/images/paul.jpg">
         </li>
         <li class="pdd-top-20">
@@ -13,11 +13,35 @@
           <div class="player">64 Kg</div>
           <div class="player">1m58</div>
         </li>
+        <li class="pdd-top-50 text-center">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="exerciseButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select Exercise
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <span class="dropdown-item">Squats</span>
+              <span class="dropdown-item">Exercise 2</span>
+              <span class="dropdown-item">Exercise 3</span>
+            </div>
+          </div>
+        </li>
+        <li class="text-center pdd-top-10">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="sessionButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Last Session
+          </button>
+        </li>
+        <li class="text-center pdd-top-10">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="repButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Rep Score
+          </button>
+        </li>
+        <li class="text-center pdd-top-50">
+          <img class="img-fluid" src="../../assets/images/chiron_bow.png">
+        </li>
       </ul>
     </div>
     <!-----------  END OF SIDEBAR  ---------------->
     <div *ngIf="records.length >= 1 && !isFetching" class="col-md-10">
-      <div class="dropdown-divider"></div>
       <div class="row pdd-top-50">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
           <app-amplitude-chart></app-amplitude-chart>

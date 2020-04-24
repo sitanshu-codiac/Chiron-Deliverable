@@ -17,8 +17,7 @@ export class ExplosiviteChartComponent implements OnInit, OnDestroy {
   type = 'LineChart';
   title = 'EXPLOSIVITE GLOBALE';
   columnNames = ['Axis', 'EXPLOSIVITE'];
-  data;
-  avg;
+  data; avg; maxValue; minValue;
   options = {
     chartArea: {
       left: '10%',
@@ -36,7 +35,7 @@ export class ExplosiviteChartComponent implements OnInit, OnDestroy {
       alignment: 'center'
     },
     curveType: 'function',
-    colors: ['yellow'],
+    colors: ['#d0fa02'],
     titleTextStyle: {
       color: 'fff',
       fontSize: 16
@@ -77,6 +76,9 @@ export class ExplosiviteChartComponent implements OnInit, OnDestroy {
           for (const key of this.data) {
             sum += key[1];
           }
+          const valueArray = [];
+          this.maxValue = Math.max(...valueArray).toPrecision(2);
+          this.minValue = Math.min(...valueArray).toPrecision(2);
           const average = sum / this.data.length;
           this.avg = average.toPrecision(4);
           return responseData;

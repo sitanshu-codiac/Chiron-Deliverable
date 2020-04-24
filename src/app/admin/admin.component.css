@@ -1,24 +1,7 @@
-#chart {
-  width: 100%;
-  height: 300px;
-  position: relative;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;   /* chartArea top  */
-  left: 70%; /* chartArea left */
-  color: #ffffff;
-  font-size: 25px;
-  font-weight: 600;
-  font-family: 'Lato';
-}
-
 .sidebar {
   border-left: 3px solid #00ff00;
   border-right: 3px solid #00ff00;
   bottom: 0;
-  height: 100vh;
 }
 
 .sidebar-account {
@@ -56,6 +39,37 @@
 .player {
   color: #ffffff;
   padding-left: 20px;
+}
+
+.btn {
+  background-color: transparent !important;
+  border: 1px solid #00ff00 !important;
+}
+
+li {
+  list-style: none;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-menu {
+  border-radius: 0 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #e3e3e3;
+}
+
+#sessionButton {
+  padding-left: 21px;
+  padding-right: 20px;
+}
+
+#repButton {
+  padding-left: 28px;
+  padding-right: 27px;
 }
 
 @media (min-width: 992px) {
