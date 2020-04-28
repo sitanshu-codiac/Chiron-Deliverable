@@ -13,6 +13,29 @@
   margin-top: 0.5rem;
 }
 
+.asymmetryBlockRight {
+  background-color: #f23c50;
+  width: 150px;
+  height: 50px;
+  margin-left: auto;
+}
+
+.asymmetryBlockLeft {
+  background-color: #e3e3e3;
+  width: 150px;
+  height: 50px;
+  margin-right: auto;
+}
+
+.asymmetryInfo {
+  text-transform: uppercase;
+  color: #f23c50;
+  text-align: left;
+}
+
+p {
+  margin: 0px !important;
+}
 /*.wrapper .sideMenu {
   position: fixed;
   top: 0;

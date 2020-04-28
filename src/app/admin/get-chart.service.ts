@@ -18,12 +18,14 @@ export class GetChartService {
       .pipe(
         map(responseData => {
         console.log(responseData);
+        const dataArray = [];
+        dataArray.push(responseData);
         const amplitudeArray = [];
         const symmetryArray = [];
         const explosiviteArray = [];
         const someArray = [];
         const dataTransformArray = [];
-        for (const key of responseData) {
+        for (const key of dataArray) {
           var i = 1;
           var j = 1;
           for (const serie of key.series) {

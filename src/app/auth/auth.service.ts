@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   private isAuthenticated = false;
   private token;
+  private user;
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -16,12 +17,42 @@ export class AuthService {
     return this.token;
   }
 
+  getUserDetails() {
+    return this.user;
+  }
+
   getIsAuth() {
     return this.isAuthenticated;
   }
 
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
+  }
+
+  login(enteredEmail: string, enteredPassword: string) {
+    // const authData: AuthData = { email: enteredEmail, password: enteredPassword };
+    console.log('enter' + enteredEmail, enteredPassword);
+
+    this.http.post<{token: string, user: AuthData[]}>('http://localhost:3000/api/user/login', {
+      email: enteredEmail,
+      password: enteredPassword
+    })
+      .subscribe(response => {
+        console.log(response);
+        this.user = response.user;
+        const token = response.token;
+        this.token = token;
+        this.isAuthenticated = true;
+        this.authStatusListener.next(true);
+        this.router.navigate(['/admin']);
+      });
+  }
+
+  logout() {
+    this.token = null;
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
+    this.router.navigate(['/']);
   }
 
   createUser(enteredEmail: string, enteredPassword: string) {
@@ -33,29 +64,6 @@ export class AuthService {
       .subscribe(response => {
         console.log(response);
       });
-  }
-
-  login(enteredEmail: string, enteredPassword: string) {
-    // const authData: AuthData = { email: enteredEmail, password: enteredPassword };
-    this.http.post<{userName: string, token: string, userWeight: number}>('http://localhost:3000/api/user/login', {
-      enteredEmail,
-      enteredPassword
-    })
-      .subscribe(response => {
-        console.log(response);
-        const token = response.token;
-        this.token = token;
-        this.isAuthenticated = true;
-        this.authStatusListener.next(true);
-        // this.router.navigate(['/admin']);
-      });
-  }
-
-  logout() {
-    this.token = null;
-    this.isAuthenticated = false;
-    this.authStatusListener.next(false);
-    this.router.navigate(['/']);
   }
 
 }

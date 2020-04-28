@@ -83,8 +83,8 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
             sum += key[1];
             valueArray.push(key[1]);
           }
-          this.maxValue = Math.max(...valueArray);
-          this.minValue = Math.min(...valueArray);
+          this.maxValue = Math.max(...valueArray).toPrecision(4);
+          this.minValue = Math.min(...valueArray).toPrecision(4);
           const average = sum / this.data.length;
           this.avg = average.toPrecision(4);
           return responseData;

@@ -116,3 +116,17 @@ html, body{
   font-weight: 600;
   font-family: 'Lato';
 }
+
+.maxOverlay {
+  position: absolute;
+  top: 100%;   /* chartArea top  */
+  left: 75%; /* chartArea left */
+  color: #fff;
+}
+
+.minOverlay {
+  position: absolute;
+  top: 100%;   /* chartArea top  */
+  left: 15%; /* chartArea left */
+  color: #fff;
+}

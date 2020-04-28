@@ -53,8 +53,7 @@ router.post("/login", (req, res, next) => {
     );
     res.status(200).json({
       token: token,
-      userName: userFetched.first_name + userFetched.last_name,
-      userWeight: userFetched.weight
+      user: userFetched
     });
   })
   .catch(err => {
