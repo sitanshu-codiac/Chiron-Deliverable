@@ -107,15 +107,7 @@ html, body{
   position: relative;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;   /* chartArea top  */
-  left: 70%; /* chartArea left */
-  color: #fff;
-  font-size: 25px;
-  font-weight: 600;
-  font-family: 'Lato';
-}
+
 
 .maxOverlay {
   position: absolute;

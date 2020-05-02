@@ -25,6 +25,8 @@ import { PartnersComponent } from './home/partners/partners.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { AmplitudeChartComponent } from './admin/amplitude-chart/amplitude-chart.component';
 import { ExplosiviteChartComponent } from './admin/explosivite-chart/explosivite-chart.component';
@@ -64,7 +66,9 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

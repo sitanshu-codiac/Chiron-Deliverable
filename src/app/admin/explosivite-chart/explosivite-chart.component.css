@@ -1,0 +1,10 @@
+.overlay {
+  position: absolute;
+  font-style: italic;
+  top: 32%;   /* chartArea top  */
+  left: 87%; /* chartArea left */
+  color: #d0fa02;
+  font-size: 28px;
+  font-weight: 600;
+  font-family: 'Lato';
+}

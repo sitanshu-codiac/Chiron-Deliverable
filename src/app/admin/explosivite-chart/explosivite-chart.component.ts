@@ -15,38 +15,31 @@ export class ExplosiviteChartComponent implements OnInit, OnDestroy {
   private recordsSub: Subscription;
 
   type = 'LineChart';
-  title = 'EXPLOSIVITE GLOBALE';
   columnNames = ['Axis', 'EXPLOSIVITE'];
   data; avg; maxValue; minValue;
   overlay = [];
   autoSaveInterval;
   counter = 0;
   options = {
-    chartArea: {
-      left: '10%',
-      top: '10%',
-      width: '80%',
-      height: '80%'
+    title: 'EXPLOSIVENESS (kg/sec.)',
+    titleTextStyle: {
+      color: '#d0fa02',
+      fontSize: 16,
+      bold: true,
+      italic: true
     },
-    legend: {
-      position: 'top',
-      textStyle: {
-        color: 'white',
-        fontSize: 16,
-        bold: 'true'
-      },
-      alignment: 'center'
-    },
+    legend: {position: 'none'},
     curveType: 'function',
     colors: ['#d0fa02'],
-    titleTextStyle: {
-      color: 'fff',
-      fontSize: 16
-    },
     backgroundColor: {
       fill: 'none'
     },
     hAxis: {
+      title: 'Rep.',
+      titleTextStyle: {
+        color: '#fff',
+        fontSize: 16
+      },
       gridlines: {
         color: 'none'
       },
@@ -55,6 +48,11 @@ export class ExplosiviteChartComponent implements OnInit, OnDestroy {
       }
     },
     vAxis: {
+      title: 'kg/sec',
+      titleTextStyle: {
+        color: '#fff',
+        fontSize: 16
+      },
       gridlines: {
         color: 'none'
       },

@@ -17,38 +17,30 @@ export class PhaseChartComponent implements OnInit, OnDestroy {
 
   type = 'ColumnChart';
   columnNames = ['Axis', 'PHASE CONCENTRIQUE', 'PHASE ISOMETRIQUE', 'PHASE EXCENTRIQUE'];
-  data;
-  avg;
+  data; avgPhaseConc; avgPhaseIso; avgPhaseExp;
   options1 = {
     isStacked: true
   }
   options = {
-    chartArea: {
-      left: '10%',
-      top: '10%',
-      width: '80%',
-      height: '80%'
+    title: 'PHASE TIME (sec.)',
+    titleTextStyle: {
+      color: '#838583',
+      fontSize: 16,
+      bold: true,
+      italic: true
     },
-    legend: {
-      position: 'top',
-      textStyle: {
-        color: 'white',
-        fontSize: 16,
-        bold: 'true'
-      },
-      alignment: 'center',
-      maxLines: 3
-    },
+    legend: {position: 'none'},
     isStacked: true,
     colors: ['#f23c50', '#ffffff', '#2ace9a'],
-    titleTextStyle: {
-      color: 'fff',
-      fontSize: 16
-    },
     backgroundColor: {
       fill: 'none'
     },
     hAxis: {
+      title: 'Rep.',
+      titleTextStyle: {
+        color: '#fff',
+        fontSize: 16
+      },
       gridlines: {
         color: 'none'
       },
@@ -57,6 +49,11 @@ export class PhaseChartComponent implements OnInit, OnDestroy {
       }
     },
     vAxis: {
+      title: 'sec',
+      titleTextStyle: {
+        color: '#fff',
+        fontSize: 16
+      },
       gridlines: {
         color: 'none'
       },
@@ -76,6 +73,20 @@ export class PhaseChartComponent implements OnInit, OnDestroy {
           for (const key of responseData) {
             this.data = key.phaseChart;
           }
+          let sumConc = 0;
+          let sumIso = 0;
+          let sumExp = 0;
+          for (const key of this.data) {
+            sumConc += key[1];
+            sumIso += key[2];
+            sumExp += key[3];
+          }
+          const averageConc = sumConc / this.data.length;
+          const averageIso = sumIso / this.data.length;
+          const averageExp = sumExp / this.data.length;
+          this.avgPhaseConc = averageConc.toPrecision(4);
+          this.avgPhaseIso = averageIso.toPrecision(4);
+          this.avgPhaseExp = averageExp.toPrecision(4);
           return responseData;
         })
       )

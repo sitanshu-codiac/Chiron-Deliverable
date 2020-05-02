@@ -4,33 +4,98 @@
   bottom: 0;
 }
 
+.text {
+  font-size: 70px;
+  color: #00ff00;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.player {
+  color: #ffffff;
+  padding-left: 15px;
+}
+
+.btn {
+  background-color: transparent !important;
+  border: 2px solid #00ff00 !important;
+  font-weight: 600;
+  text-transform: uppercase;
+
+}
+
+li {
+  list-style: none;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-menu {
+  border-radius: 0 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #e3e3e3;
+}
+
+.logo-transform {
+  transform: translateX(9%) translateY(-40%) rotate(90deg);
+  transform-origin: bottom left;
+}
+
 .sidebar-account {
   text-decoration: none;
   padding-left: 0 !important;
 }
 
-.wrapper {
-  margin-top: 0.5rem;
+.asymmetry-color {
+  background-color: #f23c50 !important;
 }
 
 .asymmetryBlockRight {
-  background-color: #f23c50;
   width: 150px;
-  height: 50px;
   margin-left: auto;
 }
 
 .asymmetryBlockLeft {
-  background-color: #e3e3e3;
   width: 150px;
-  height: 50px;
   margin-right: auto;
 }
 
 .asymmetryInfo {
   text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.7px;
   color: #f23c50;
-  text-align: left;
+  font-size: 14px !important;
+}
+
+.asym-color-green {
+  color: #2ace9a !important;
+}
+
+.asym-color-white {
+  color:#fff !important;
+}
+
+.asym-color-red {
+  color:#f23c50 !important;
+}
+
+.asymbar-color-green {
+  background-color: #2ace9a !important;
+}
+.asymbar-color-white {
+  background-color: #fff !important;
+}
+.asymbar-color-red {
+  background-color: #f23c50 !important;
+}
+
+.asymbar-color-grey {
+  background-color: #838383;
 }
 
 p {
@@ -52,38 +117,7 @@ p {
   border-right: 3px solid #00ff00;
 }*/
 
-.text {
-  font-size: 50px;
-  color: #00ff00;
-  padding-left: 20px;
-  font-weight: 600;
-}
 
-.player {
-  color: #ffffff;
-  padding-left: 20px;
-}
-
-.btn {
-  background-color: transparent !important;
-  border: 1px solid #00ff00 !important;
-}
-
-li {
-  list-style: none;
-}
-
-.dropdown-toggle::after {
-  display: none !important;
-}
-
-.dropdown-menu {
-  border-radius: 0 !important;
-}
-
-.dropdown-item:hover {
-  background-color: #e3e3e3;
-}
 
 #sessionButton {
   padding-left: 21px;
@@ -95,6 +129,35 @@ li {
   padding-right: 27px;
 }
 
+
+.fa {
+  font-size: 30px !important;
+  color: #ffffff;
+}
+
+.mat-select-panel {
+  border-radius: 0 !important;
+}
+
+.mat-select-value {
+  color: #fff !important;
+}
+
+.mat-form-field-underline, .mat-form-field-underline:focus {
+  background-color: #00ff00;
+}
+
+.view-change {
+  justify-content: flex-end;
+}
+
+.width-100 {
+  width: 100% !important;
+}
+
+.width-99 {
+  width: 99% !important
+}
 @media (min-width: 992px) {
 
 }

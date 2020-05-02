@@ -4,8 +4,14 @@
     [data]="data"
     [columnNames]="columnNames"
     [dynamicResize]="true"
-    [options]="options1"
+    [options]="options"
   >
   </google-chart>
+  <div class="overlay">
+    <p id="changeText" style="color: #2ace9a; margin-bottom: 0;">{{ avgPhaseConc }}</p>
+    <p style="color: #ffffff; margin-bottom: 0;">{{ avgPhaseIso }}</p>
+    <p style="color: #f23c50; margin-bottom: 0;">{{ avgPhaseExp }}</p>
+    <p style="color: #838583;">AVG</p>
+  </div>
 </div>
 

@@ -16,7 +16,6 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
   private recordsSub: Subscription;
 
   type = 'ColumnChart';
-  title = 'AMPLITUDE';
   columnNames = ['Axis', 'AMPLITUDE'];
   data; avg; maxValue; minValue;
 
@@ -25,30 +24,24 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
   counter = 0;
 
   options = {
-    chartArea: {
-      left: '10%',
-      top: '10%',
-      width: '80%',
-      height: '80%'
-    },
-    legend: {
-      position: 'top',
-      textStyle: {
-        color: 'white',
-        fontSize: 16,
-        bold: 'true'
-      },
-      alignment: 'center'
-    },
-    colors: ['#2ace9a'],
+    title: 'AMPLITUDE',
     titleTextStyle: {
-      color: 'fff',
-      fontSize: 16
+      color: '#2ace9a',
+      fontSize: 16,
+      bold: true,
+      italic: true
     },
+    legend: {position: 'none'},
+    colors: ['#2ace9a'],
     backgroundColor: {
       fill: 'none'
     },
     hAxis: {
+      title: 'Rep.',
+      titleTextStyle: {
+        color: '#fff',
+        fontSize: 16
+      },
       gridlines: {
         color: 'none'
       },
@@ -57,6 +50,11 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
       }
     },
     vAxis: {
+      title: '%',
+      titleTextStyle: {
+        color: '#fff',
+        fontSize: 16
+      },
       gridlines: {
         color: 'none'
       },

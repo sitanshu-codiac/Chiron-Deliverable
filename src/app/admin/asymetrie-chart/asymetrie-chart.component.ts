@@ -16,35 +16,33 @@ export class AsymetrieChartComponent implements OnInit, OnDestroy {
   private recordsSub: Subscription;
 
   type = 'LineChart';
-  title = 'ASYMETRIE GLOBALE';
   columnNames = ['Axis', 'ASYMETRIE'];
   data; avg; maxValue; minValue;
+  overlay = [];
+  autoSaveInterval;
+  counter = 0;
   options = {
-    chartArea: {
-      left: '10%',
-      top: '10%',
-      width: '80%',
-      height: '80%'
+    title: 'ASYMMETRY',
+    titleTextStyle: {
+      color: '#32b0f3',
+      fontSize: 16,
+      bold: true,
+      italic: true
     },
     colors: ['#32b0f3'],
     legend: {
-      position: 'top',
-      textStyle: {
-        color: 'white',
-        fontSize: 16,
-        bold: 'true'
-      },
-      alignment: 'center'
+      position: 'none'
     },
     curveType: 'function',
-    titleTextStyle: {
-      color: 'fff',
-      fontSize: 16
-    },
     backgroundColor: {
       fill: 'none'
     },
     hAxis: {
+      title: 'Rep.',
+      titleTextStyle: {
+        color: '#fff',
+        fontSize: 16
+      },
       gridlines: {
         color: 'none'
       },
@@ -53,6 +51,11 @@ export class AsymetrieChartComponent implements OnInit, OnDestroy {
       }
     },
     vAxis: {
+      title: '%',
+      titleTextStyle: {
+        color: '#fff',
+        fontSize: 16
+      },
       gridlines: {
         color: 'none'
       },
@@ -90,6 +93,18 @@ export class AsymetrieChartComponent implements OnInit, OnDestroy {
         this.records = records;
         this.isFetching = false;
     });
+    setInterval(() => this.change(), 3000 );
+  }
+
+  change() {
+    this.overlay.push('Avg: ' + this.avg);
+    this.overlay.push(`Max: ${this.maxValue}`);
+    this.autoSaveInterval = this.overlay[this.counter];
+    this.counter++;
+    if (this.counter >= this.overlay.length) {
+      this.counter = 0;
+      // clearInterval(inst); // uncomment this if you want to stop refreshing after one cycle
+    }
   }
 
   ngOnDestroy() {

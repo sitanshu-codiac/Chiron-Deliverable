@@ -1,19 +1,26 @@
 <div class="container-fluid">
-  <div class="row pdd-bottom-30">
+  <div class="row">
     <div class="col-md-2 sidebar">
       <ul class="sidebar-account">
-        <li class="pdd-top-20">
+        <li class="">
           <span class="text">7</span>
         </li>
-        <li class="pdd-top-10 text-center">
+        <li class="text-center">
           <img class="img-fluid" src="../../assets/images/paul.jpg">
         </li>
-        <li class="pdd-top-20">
-          <div class="player">{{user.first_name}} {{user.last_name}}</div>
-          <div class="player">{{user.weight}} Kg</div>
-          <div class="player">{{user.height}}</div>
+        <li class="pdd-top-15">
+          <div class="player">Paul Charton</div>
+          <div class="player">64 Kg</div>
+          <div class="player">156</div>
         </li>
-        <li class="pdd-top-50 text-center">
+        <li class="pdd-top-50 text-center font-color-white">
+          <!--<mat-form-field>
+            <mat-select>
+              <mat-option *ngFor="let ex of exerciseList" [value]="ex.value">
+                {{ex.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>-->
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="exerciseButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Select Exercise
@@ -26,7 +33,7 @@
           </div>
         </li>
         <li class="text-center pdd-top-10">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="sessionButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary" type="button" id="sessionButton">
               Last Session
           </button>
         </li>
@@ -41,55 +48,168 @@
       </ul>
     </div>
     <!-----------  END OF SIDEBAR  ---------------->
-    <div *ngIf="records.length >= 1 && !isFetching" class="col-md-10">
-      <div class="row pdd-top-50">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <app-amplitude-chart></app-amplitude-chart>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <app-explosivite-chart></app-explosivite-chart>
-        </div>
-      </div>
-      <div class="row pdd-top-50">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <app-phase-chart></app-phase-chart>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <app-asymetrie-chart ></app-asymetrie-chart>
-        </div>
-      </div>
-      <div class="row pdd-top-50">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+    <div class="col-md-3" *ngIf="currentView === 'bars' && records.length >= 1 && !isFetching">
+      <div class="row">
+        <div class="col-md-12">
           <div class="row">
+            <img class="img-fluid logo-transform" src="../../assets/images/chiron-green.png">
+          </div>
+          <div class="row pdd-top-30">
             <img class="img-fluid" style="margin: auto;" src="../../assets/images/dummy.png">
-            <img class="img-fluid" style="position: absolute; top: 42%; left: 34%"  src="../../assets/images/node.png">
-            <img class="img-fluid" style="position: absolute; top: 42%; left: 54%"  src="../../assets/images/node.png">
-            <img class="img-fluid" style="position: absolute; top: 44%; left: 68%; transform: rotate(180deg); z-index: -1;" src="../../assets/images/arrows.png">
-            <img class="img-fluid" style="position: absolute; top: 63%; left: 32%"  src="../../assets/images/node.png">
-            <img class="img-fluid" style="position: absolute; top: 65%; left: 13%" src="../../assets/images/arrows.png">
+            <img class="img-fluid" style="position: absolute; top: 40%; left: 33%"  src="../../assets/images/node.png">
+            <img class="img-fluid" style="position: absolute; top: 40%; left: 54%"  src="../../assets/images/node.png">
+            <img class="img-fluid" style="position: absolute; top: 41.5%; left: 68%; transform: rotate(180deg); z-index: -1;" src="../../assets/images/arrows.png">
+            <img class="img-fluid" style="position: absolute; top: 57%; left: 30%"  src="../../assets/images/node.png">
+            <img class="img-fluid" style="position: absolute; top: 58.5%; left: 10%" src="../../assets/images/arrows.png">
           </div>
           <div class="row" style="display: flex;">
-            <div class="asymmetryBlockRight"></div>
-            <div class="asymmetryBlockLeft"></div>
+            <div class="asymmetryBlockRight">
+              <div style="height: 50px;"
+                [ngClass]="{
+                  'asymbar-color-green': asymValue >= 0 && asyAttribute === 'low',
+                  'asymbar-color-white': asymValue >= 0 && asyAttribute === 'medium',
+                  'asymbar-color-red': asymValue >= 0 && asyAttribute === 'high'
+                }">
+              </div>
+              <div *ngIf="asymValue >= 0" style="margin-top: 15px;">
+                <div class="asymmetryInfo">
+                  <p>imbalance lvl</p>
+                  <div [ngClass]="{
+                    'asym-color-green': asyAttribute === 'low',
+                    'asym-color-white': asyAttribute === 'medium',
+                    'asym-color-red': asyAttribute === 'high'
+                  }"><span>= </span>{{asyAttribute}}</div>
+                  <p>right side</p>
+                  <p style="color: #2f95cd"><span>(</span>{{asymValue}}<span> avg)</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="asymmetryBlockLeft">
+              <div style="height: 50px; background-color: #838383;"
+                [ngClass]="{
+                  'asymbar-color-green': asymValue < 0 && asyAttribute === 'low',
+                  'asymbar-color-white': asymValue < 0 && asyAttribute === 'medium',
+                  'asymbar-color-red': asymValue < 0 && asyAttribute === 'high'
+                }"></div>
+              <div *ngIf="asymValue < 0" style="margin-top: 20px;">
+                <div style="text-align: right;" class="asymmetryInfo">
+                  <p>imbalance lvl</p>
+                  <div [ngClass]="{
+                    'asym-color-green': asyAttribute === 'low',
+                    'asym-color-white': asyAttribute === 'medium',
+                    'asym-color-red': asyAttribute === 'high'
+                  }"><span>= </span>{{asyAttribute}}</div>
+                  <p>left side</p>
+                  <p style="color: #2f95cd"><span>(</span>{{asymValue}}<span> avg)</span></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="asymmetryInfo">
-            <span>imbalance lvl</span>
-            <span>= low</span>
-            <span>right side</span>
-            <span>(avg)</span>
+      </div>
+    </div>
+    <!---------------- END OF DUMMY --------------->
+    <div *ngIf="records.length >= 1 && !isFetching" style="padding-left: 0px;"
+      [ngClass]="{
+        'col-md-7 pdd-bottom-50': currentView === 'bars',
+        'col-md-10': currentView === 'grid'
+      }">
+      <!-- <div class="row view-change pdd-top-20 pdd-right-20">
+        <i *ngIf="currentView === 'bars'" (click)="changeView('grid')" class="fa fa-th-large"></i>
+        <i *ngIf="currentView === 'grid'" (click)="changeView('bars')" class="fa fa-bars"></i>
+      </div> -->
+
+      <div class="row pdd-top-30">
+        <div style="padding-left: 0px;"
+        [ngClass]="{
+          'col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12': currentView === 'bars',
+          'col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pdd-top-30 pdd-bottom-30': currentView === 'grid'
+          }"
+        ><app-amplitude-chart></app-amplitude-chart>
+        </div>
+        <div style="padding-left: 0px;"
+          [ngClass]="{
+          'col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mar-top-30': currentView === 'bars',
+          'col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6': currentView === 'grid'
+          }"
+        ><app-explosivite-chart></app-explosivite-chart>
+        </div>
+      </div>
+      <div class="row">
+        <div style="padding-left: 0px;"
+          [ngClass]="{
+            'col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12': currentView === 'bars',
+            'col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6': currentView === 'grid'
+            }"
+          ><app-phase-chart></app-phase-chart>
+        </div>
+        <div style="padding-left: 0px;"
+          [ngClass]="{
+          'col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mar-top-30': currentView === 'bars',
+          'col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6': currentView === 'grid'
+          }"
+          ><app-asymetrie-chart></app-asymetrie-chart>
+        </div>
+      </div>
+      <!----------------- END of graphs --------------------->
+      <div class="row pdd-top-50" *ngIf="currentView === 'grid'">
+        <div class="col-md-12">
+          <div class="row">
+            <img class="img-fluid" style="margin: auto;" src="../../assets/images/dummy.png">
+            <img class="img-fluid" style="position: absolute; top: 42%; left: 45%"  src="../../assets/images/node.png">
+            <img class="img-fluid" style="position: absolute; top: 42%; left: 51%"  src="../../assets/images/node.png">
+            <img class="img-fluid" style="position: absolute; top: 44%; left: 55.5%; transform: rotate(180deg); z-index: -1;" src="../../assets/images/arrows.png">
+            <img class="img-fluid" style="position: absolute; top: 63%; left: 44%"  src="../../assets/images/node.png">
+            <img class="img-fluid" style="position: absolute; top: 65%; left: 38%" src="../../assets/images/arrows.png">
+          </div>
+          <div class="row" style="display: flex;">
+            <div class="asymmetryBlockRight">
+              <div style="height: 50px;"
+                [ngClass]="{
+                  'asym-color-green': asymValue >= 0 && asyAttribute === 'low',
+                  'asym-color-white': asymValue >= 0 && asyAttribute === 'medium',
+                  'asym-color-red': asymValue >= 0 && asyAttribute === 'high',
+                  'asym-color-grey': asymValue >= 0
+                }">
+              </div>
+              <div *ngIf="asymValue >= 0" style="margin-top: 20px;">
+                <div class="asymmetryInfo">
+                  <p>imbalance lvl</p>
+                  <div [ngClass]="{
+                    'asym-color-green': asyAttribute === 'low',
+                    'asym-color-white': asyAttribute === 'medium',
+                    'asym-color-red': asyAttribute === 'high'
+                  }"><span>= </span>{{asyAttribute}}</div>
+                  <p>right side</p>
+                  <p style="color: #2f95cd"><span>(</span>{{asymValue}}<span> avg)</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="asymmetryBlockLeft">
+              <div style="height: 50px; background-color: #838383;"
+                [ngClass]="{
+                  'asym-color-green': asymValue < 0 && asyAttribute === 'low',
+                  'asym-color-white': asymValue < 0 && asyAttribute === 'medium',
+                  'asym-color-red': asymValue < 0 && asyAttribute === 'high',
+                  'asym-color-grey': asymValue < 0
+                }"></div>
+              <div *ngIf="asymValue < 0" style="margin-top: 20px;">
+                <div style="text-align: right;" class="asymmetryInfo">
+                  <p>imbalance lvl</p>
+                  <div [ngClass]="{
+                    'asym-color-green': asyAttribute === 'low',
+                    'asym-color-white': asyAttribute === 'medium',
+                    'asym-color-red': asyAttribute === 'high'
+                  }"><span>= </span>{{asyAttribute}}</div>
+                  <p>left side</p>
+                  <p style="color: #2f95cd"><span>(</span>{{asymValue}}<span> avg)</span></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4"></div>
       </div>
     </div>
     <!--------------- END OF MAIN SECTION ----------------->
   </div>
-  <!--<div class="row">
-    <div class="col-md-12 text-center">
-      <div class="dropdown-divider" style="margin: 0 !important"></div>
-      <p class="text-center pdd-top-30 pdd-bottom-30">©2020, ChironIT. All Rights Reserved.</p>
-  </div> -->
 </div>

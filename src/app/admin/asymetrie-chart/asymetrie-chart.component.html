@@ -4,11 +4,21 @@
     [data]="data"
     [columnNames]="columnNames"
     [dynamicResize]="true"
-
+    [options]="options"
   >
   </google-chart>
   <div class="overlay">
-    <div>Avg: {{avg}}</div>
+    <div id="changeText">{{ avg }}
+      <p *ngIf="avg >= 0" style="margin-bottom: 0;">RIGHT</p>
+      <p *ngIf="avg < 0" style="margin-bottom: 0;">LEFT</p>
+      <p>AVG</p>
+    </div>
   </div>
+  <!---<div class="maxOverlay">
+    <div id="changeText">MAX: {{ maxValue }} %</div>
+  </div>
+  <div class="minOverlay">
+    <div id="changeText">AVG: {{ avg }} %</div>
+  </div> --->
 </div>
 
