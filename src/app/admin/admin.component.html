@@ -13,24 +13,29 @@
           <div class="player">64 Kg</div>
           <div class="player">156</div>
         </li>
-        <li class="pdd-top-50 text-center font-color-white">
-          <!--<mat-form-field>
-            <mat-select>
-              <mat-option *ngFor="let ex of exerciseList" [value]="ex.value">
-                {{ex.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>-->
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="exerciseButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select Exercise
+        <li class="pdd-top-50 text-center">
+          <select class="btn btn-secondary" name="exercise" [(ngModel)]="exercise" (change)="filterExercise($event.target.value)">
+            <option class="dropdown-item" *ngFor="let ex of exerciseList" [value]="ex.value">{{ex.viewValue}}</option>
+          </select>
+          <!--<div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="exerciseButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              [(ngModel)]="dropMenu"
+              name="exercise"
+              ngDefaultControl
+              #ctrl="ngModel"
+              (click)="menu(ctrl)"
+              >    Select Exercise
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <span class="dropdown-item">Squats</span>
-              <span class="dropdown-item">Exercise 2</span>
-              <span class="dropdown-item">Exercise 3</span>
+              <span class="dropdown-item" *ngFor="let ex of exerciseList">{{ex.viewValue}}</span>
             </div>
-          </div>
+          </div>-->
         </li>
         <li class="text-center pdd-top-10">
           <button class="btn btn-secondary" type="button" id="sessionButton">
@@ -125,7 +130,7 @@
           'col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12': currentView === 'bars',
           'col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pdd-top-30 pdd-bottom-30': currentView === 'grid'
           }"
-        ><app-amplitude-chart></app-amplitude-chart>
+        ><app-amplitude-chart [data]="exerciseID"></app-amplitude-chart>
         </div>
         <div style="padding-left: 0px;"
           [ngClass]="{

@@ -3,6 +3,7 @@ const Records = require('../model/records');
 const router = express.Router();
 
 router.get("", (req, res, next) => {
+  console.log(req.uID);
   Records.findOne({ _id: '5d9e1dbe6c3dc9435415a162' }).sort({date: -1})
     .then(fetchedRecords => {
       if(fetchedRecords) {

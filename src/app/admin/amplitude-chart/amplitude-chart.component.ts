@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GetChartService } from '../get-chart.service';
 import { map } from 'rxjs/operators';
@@ -14,10 +14,11 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
   isFetching = false;
   records: ChartData[] = [];
   private recordsSub: Subscription;
+  @Input() data;
 
   type = 'ColumnChart';
   columnNames = ['Axis', 'AMPLITUDE'];
-  data; avg; maxValue; minValue;
+   avg; maxValue; minValue;
 
   overlay = [];
   autoSaveInterval;
@@ -68,7 +69,7 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isFetching = true;
-    this.chartService.getChartData();
+    this.chartService.getChartData(2);
     this.recordsSub = this.chartService.getRecordsUpdateListener()
       .pipe(
         map(responseData => {
@@ -104,6 +105,10 @@ export class AmplitudeChartComponent implements OnInit, OnDestroy {
       this.counter = 0;
       // clearInterval(inst); // uncomment this if you want to stop refreshing after one cycle
     }
+  }
+
+  onExerciseChange() {
+
   }
 
   ngOnDestroy() {

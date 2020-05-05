@@ -69,7 +69,7 @@ export class AsymetrieChartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isFetching = true;
-    this.chartService.getChartData();
+    this.chartService.getChartData(2);
     this.recordsSub = this.chartService.getRecordsUpdateListener()
       .pipe(
         map(responseData => {

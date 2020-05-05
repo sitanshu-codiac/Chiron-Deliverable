@@ -15,9 +15,10 @@ export class GetChartService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getChartData() {
+  getChartData(exerciseID) {
     this.user = this.authService.getUserDetails();
-    this.http.get<Records[]>('http://localhost:3000/api/chart')
+    const queryParams = `?uID=${this.user.uID}&exID=${exerciseID}`;
+    this.http.get<Records[]>('http://localhost:3000/api/chart' + queryParams)
       .pipe(
         map(responseData => {
         console.log(responseData);

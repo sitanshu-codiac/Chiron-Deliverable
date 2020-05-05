@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { GetChartService } from './get-chart.service';
 import { Subscription } from 'rxjs';
 import { ChartData } from './chart-data.model';
@@ -16,6 +16,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   currentView = 'bars';
   records: ChartData[] = [];
   user;
+  exercise;
+  @Output() exerciseID = new EventEmitter();
   private recordsSub: Subscription;
   exerciseList = [
     {value: '4', viewValue: 'Squats'},
@@ -29,7 +31,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isFetching = true;
-    this.chartService.getChartData();
+    this.chartService.getChartData(2);
     this.recordsSub = this.chartService.getRecordsUpdateListener()
     .pipe(
       map(responseData => {
@@ -38,7 +40,6 @@ export class AdminComponent implements OnInit, OnDestroy {
           data = key.symmetryChart;
         }
         let sum = 0;
-        const valueArray = [];
         for (const key of data) {
           sum += key[1];
         }
@@ -65,8 +66,24 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.currentView = view;
   }
 
-  fetchExercise(exName) {
-    console.log(exName);
+  filterExercise(ctrl) {
+    this.isFetching = true;
+    this.chartService.getChartData(ctrl);
+    this.recordsSub = this.chartService.getRecordsUpdateListener()
+    .pipe(
+      map(responseData => {
+        let data = [];
+        for (const key of responseData) {
+          data = key.amplitudeChart;
+        }
+        this.exerciseID.emit(data);
+        return responseData;
+      })
+    )
+    .subscribe(records => {
+      this.records = records;
+      this.isFetching = false;
+    });
   }
 
   ngOnDestroy() {
